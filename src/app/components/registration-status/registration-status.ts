@@ -11,29 +11,36 @@
 // }
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { RegistrationStatusService } from '../../services/registration-status.service';
 import { CarRegistrationStatus } from '../../models/car-registration-status';
 
 @Component({
   selector: 'app-registration-status',
-  templateUrl: './registration-status.html',
   standalone: true,
-  imports: [CommonModule, FormsModule],
-  styleUrl: './registration-status.css'
+  imports: [
+    CommonModule,
+    RouterLink
+  ],
+  templateUrl: './registration-status.html',
+  styleUrls: ['./registration-status.css']
 })
 export class RegistrationStatus implements OnInit, OnDestroy {
 
+  // 👇 explicitly type this
   statuses: CarRegistrationStatus[] = [];
-  sub?: Subscription;
+
+  private sub?: Subscription;
 
   constructor(private registrationStatusService: RegistrationStatusService) {}
 
   ngOnInit(): void {
-    this.sub = this.registrationStatusService.statuses$.subscribe(data => {
-      this.statuses = data;
-    });
+    this.sub = this.registrationStatusService.statuses$.subscribe(
+      (s: CarRegistrationStatus[]) => {
+        this.statuses = s;
+      }
+    );
   }
 
   ngOnDestroy(): void {
@@ -48,3 +55,4 @@ export class RegistrationStatus implements OnInit, OnDestroy {
     return status.isExpired ? 'expired' : 'valid';
   }
 }
+

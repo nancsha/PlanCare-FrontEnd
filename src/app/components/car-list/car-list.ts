@@ -13,15 +13,20 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { CarService } from '../../services/car.service';
 import { Car } from '../../models/car';
 
 @Component({
   selector: 'app-car-list',
-  templateUrl: './car-list.html',
   standalone: true,
-  imports: [CommonModule, FormsModule],
-  styleUrl: './car-list.css',
+  imports: [
+    CommonModule,  // *ngIf, *ngFor, pipes
+    FormsModule,   // ngModel
+    RouterLink     // routerLink on <a>
+  ],
+  templateUrl: './car-list.html',
+  styleUrls: ['./car-list.css']
 })
 export class CarList implements OnInit {
 
@@ -59,4 +64,3 @@ export class CarList implements OnInit {
     this.loadCars();
   }
 }
-
