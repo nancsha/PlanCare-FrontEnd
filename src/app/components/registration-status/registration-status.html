@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Live Registration Status</h1>
+  <p>Updates every ~10 seconds via SignalR.</p>
+
+  <table *ngIf="statuses.length">
+    <thead>
+      <tr>
+        <th>Car Id</th>
+        <th>Registration #</th>
+        <th>Expiry (UTC)</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of statuses">
+        <td>{{ s.carId }}</td>
+        <td>{{ s.registrationNumber }}</td>
+        <td>{{ s.registrationExpiry | date:'medium' }}</td>
+        <td [ngClass]="getStatusClass(s)">
+          {{ getStatusLabel(s) }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!statuses.length">
+    Waiting for status updates...
+  </p>
+
+  <a routerLink="/">Back to cars list</a>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Cars</h1>
+
+  <div class="filter">
+    <label>
+      Filter by make:
+      <input
+        type="text"
+        [(ngModel)]="makeFilter"
+        (keyup.enter)="onFilterChange()" />
+    </label>
+    <button (click)="onFilterChange()">Search</button>
+  </div>
+
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <table *ngIf="!loading && cars.length">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Registration #</th>
+        <th>Expiry (UTC)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of cars">
+        <td>{{ car.id }}</td>
+        <td>{{ car.make }}</td>
+        <td>{{ car.model }}</td>
+        <td>{{ car.registrationNumber }}</td>
+        <td>{{ car.registrationExpiry | date:'medium' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!loading && !cars.length">No cars found.</p>
+
+  <a routerLink="/registration">Go to registration status</a>
+</div>
