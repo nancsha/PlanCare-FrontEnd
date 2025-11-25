@@ -1,6 +1,24 @@
-.valid {
+/* .valid {
   font-weight: bold;
 }
 .expired {
   font-weight: bold;
+} */
+
+.page-card {
+  margin: 16px;
+  padding: 8px;
 }
+
+.full-width-table {
+  width: 100%;
+}
+
+.status-icon {
+  margin-right: 4px;
+}
+
+.link-row {
+  margin-top: 16px;
+}
+
