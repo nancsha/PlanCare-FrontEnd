@@ -1,24 +1,46 @@
-/* .valid {
-  font-weight: bold;
-}
-.expired {
-  font-weight: bold;
-} */
 
 .page-card {
   margin: 16px;
-  padding: 8px;
+  padding: 12px;
 }
 
 .full-width-table {
   width: 100%;
+  border-collapse: collapse;
 }
 
-.status-icon {
-  margin-right: 4px;
+.mat-header-cell {
+  font-weight: 600;
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 12px 16px;
+  border-bottom: 2px solid #ccc;
+  text-align: left;
+}
+
+.mat-cell {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 14px;
+  color: #2c3e50;
+}
+
+.mat-row:hover {
+  background-color: #eef6ff;
+  cursor: pointer;
+}
+
+.mat-chip {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.mat-cell:nth-child(4),
+.mat-header-cell:nth-child(4) {
+  text-align: center;
 }
 
 .link-row {
   margin-top: 16px;
+  text-align: right;
 }
-

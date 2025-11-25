@@ -1,3 +1,18 @@
+mat-toolbar {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
 .spacer {
   flex: 1 1 auto;
+}
+
+mat-toolbar button[mat-button] {
+  color: inherit;
+  font-weight: 500;
+}
+
+mat-toolbar button[mat-button] + button[mat-button] {
+  margin-left: 8px;
 }
